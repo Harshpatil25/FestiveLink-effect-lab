@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans antialiased;
+  background-color: #0c1c16;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(201,154,28,0.3); border-radius: 9999px; transition: background 0.2s; }
+::-webkit-scrollbar-thumb:hover { background: rgba(201,154,28,0.5); }
+
+/* Rangoli decorative gradient text */
+.text-gradient-gold {
+  background: linear-gradient(120deg, #e4c551, #faf0d4, #c99a1c, #e4c551);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold-shimmer-text {
+  background: linear-gradient(110deg, #865715 0%, #e4c551 25%, #fffef8 50%, #e4c551 75%, #865715 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+.bg-rangoli {
+  background-image: radial-gradient(circle at 50% 50%, rgba(201,154,28,0.08) 0%, transparent 60%),
+    radial-gradient(circle at 0% 100%, rgba(159,43,42,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, rgba(249,115,22,0.05) 0%, transparent 50%);
+}
+
+.gold-border {
+  border-image: linear-gradient(135deg, #865715, #e4c551, #865715) 1;
+}
+
+.glass {
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Smooth fade-in for all section transitions */
+section { scroll-margin-top: 4rem; }
+
+/* Line clamp utility */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
